@@ -16,28 +16,28 @@ typedef pair<ll, ll> P;
 #define maxch(x,y) x=mmax(x,y)
 #define minch(x,y) x=mmin(x,y)
 
-ll n;
-vector<ll> g[101];
-vector<ll> resa,resb;
+int n;
+vector<int> g[101];
+vector<int> x, y;
 bool vis[101];
 
-void dfs(ll v){
-  resa.push_back(v+1);
-  rep(i,g[v].size()){
-    ll nv=g[v][i];
+void dfs(int v){
+  x.push_back(v+1);
+  rep(i, g[v].size()){
+    int nv = g[v][i];
     if(vis[nv])continue;
     dfs(nv);
   }
 }
 
-int main(){
+int main() {
   cin >> n;
   rep(i, n){
-    ll k;
+    int k;
     cin >> k;
     cin >> k;
     rep(j, k){
-      ll v;
+      int v;
       cin >> v;
       v--;
       g[i].push_back(v);
@@ -48,26 +48,26 @@ int main(){
   dfs(0);
 
   memset(vis, 0, sizeof(vis));
-  queue<ll> que;
+  queue<int> que;
   que.push(0);
   vis[0] = true;
   while(que.size()){
-    ll v = que.front(); que.pop();
-    resb.push_back(v+1);
+    int v = que.front(); que.pop();
+    y.push_back(v+1);
     rep(i, g[v].size()){
-      ll nv = g[v][i];
+      int nv = g[v][i];
       if(vis[nv]) continue;
       vis[nv] = true;
       que.push(nv);
     }
   }
 
-  cout << resb[0];
-  repl(i, 1, n)cout << " " << resb[i];
+  cout << y[0];
+  repl(i, 1, n)cout << " " << y[i];
   cout << endl;
 
-  cout << resa[0];
-  repl(i, 1, n) cout << " " << resa[i];
+  cout << x[0];
+  repl(i, 1, n) cout << " " << x[i];
   cout << endl;
 
 	return 0;

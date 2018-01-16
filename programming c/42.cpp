@@ -4,7 +4,6 @@ using namespace std;
 
 typedef long long ll;
 typedef unsigned long long ull;
-typedef pair<ll, ll> P;
 
 #define repl(i,a,b) for(ll i=(ll)(a);i<(ll)(b);i++)
 #define rep(i,n) repl(i,0,n)
@@ -16,17 +15,17 @@ typedef pair<ll, ll> P;
 #define maxch(x,y) x=mmax(x,y)
 #define minch(x,y) x=mmin(x,y)
 
-ll n;
-ll m[101][101];
+int n;
+int m[101][101];
 
-int main(){
+int main() {
   cin >> n;
   rep(i, n){
-    ll k;
+    int k;
     cin >> k;
     cin >> k;
-    rep(j, k){
-      ll v;
+    rep(j, k){ 
+      int v;
       cin >> v;
       v--;
       m[i][v] = 1;
@@ -39,3 +38,4 @@ int main(){
   }
 	return 0;
 }
+

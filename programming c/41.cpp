@@ -17,22 +17,30 @@ typedef pair<ll, ll> P;
 #define minch(x,y) x=mmin(x,y)
 
 ll n;
-ll m[101][101];
-vector<int> g[101];
+ll m[100][100];
+vector<int> g[100];
 
 int main(){
-  cin >> n;
-  rep(i, n) rep(j, n) cin >> m[i][j];
-  rep(i, n) rep(j, n) {
-    if(m[i][j]) {
-      g[i].push_back(j);
+	cin >> n;
+
+    rep(i, n) {
+    	rep(j, n) {
+    		cin >> m[i][j];
+    	}
     }
-  }
-  rep(i,n){
-    sort(all(g[i]));
-    cout << i+1 << " " << g[i].size();
-    rep(j, g[i].size()) cout << " " << g[i][j]+1;
-    cout << endl;
-  }
+    rep(i, n) {
+    	rep(j, n) {
+    		if(m[i][j]) {
+	  	      g[i].push_back(j);
+	  	  	}
+		}
+ 	}
+
+    rep(i,n){
+	    sort(all(g[i]));
+	    cout << i+1 << " " << g[i].size();
+	    rep(j, g[i].size()) cout << " " << g[i][j]+1;
+	    cout << endl;
+  	}
 	return 0;
 }

@@ -4,7 +4,6 @@ using namespace std;
 
 typedef long long ll;
 typedef unsigned long long ull;
-typedef pair<ll, ll> P;
 
 #define repl(i,a,b) for(ll i=(ll)(a);i<(ll)(b);i++)
 #define rep(i,n) repl(i,0,n)
@@ -16,24 +15,29 @@ typedef pair<ll, ll> P;
 #define maxch(x,y) x=mmax(x,y)
 #define minch(x,y) x=mmin(x,y)
 
+#define N 8
+#define FREE -1
+#define NOT_FREE 1
+
+
 
 int row[N], col[N], dpos[2 * N - 1], dneg[2 * N - 1], flag = 0;
 bool X[N][N];
 
 void init() {
-    for (int i = 0; i < N; i++) {
+    rep(i,N){
         row[i] = FREE;
         col[i] = FREE;
     }
-    for (int i = 0; i < 2 * N - 1; i++) {
+    rep(i, 2*N-1){
         dpos[i] = FREE;
         dneg[i] = FREE;
     }
 }
 
 void solve() {
-    for (int i = 0; i < N; i++) {
-        for (int j = 0; j < N; j++) {
+    rep(i, N){
+        rep(j, N) {
             if (X[i][j]) {
                 if (row[i] != j) {
                     return;
@@ -50,7 +54,7 @@ void rec(int i) {
         solve();
         return;
     }
-    for (int j = 0; j < N; j++) {
+    rep(j, N) {
         if (NOT_FREE == col[j] || NOT_FREE == dpos[i + j] || NOT_FREE == dneg[i - j + N - 1]) {
             continue;
         }
@@ -64,8 +68,8 @@ void rec(int i) {
 int main() {
     init();
     char k;
-    for (int i = 0; i < N; i++) {
-        for (int j = 0; j < N; j++) {
+    rep(i,N) {
+        rep(j,N) {
             cin >> k;
             if (k == 'Q') {
                 X[i][j] = true;
